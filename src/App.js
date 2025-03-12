@@ -1,22 +1,13 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
-
-import Navegacion from "./components/Navegacion";
-import CrearUsuarios from "./components/CrearUsuarios";
-import ListaUsuarios from "./components/ListaUsuarios";
+import Login from "./pages/Login";
 
 function App() {
   return (
-    <div className="">
-      <Navegacion />
-      <div className="container p-4">
-        <Routes>
-          <Route path="/" element={<ListaUsuarios />} />
-          <Route path="/createUser" element={<CrearUsuarios />} />
-          <Route path="/edit/:id" element={<CrearUsuarios />} />
-        </Routes>
-      </div>
-    </div>
+    <Routes>
+      <Route path="/login" element={<Login />} />
+      <Route path="/*" element={<h1>Página no encontrada</h1>} />
+    </Routes>
   );
 }
 
