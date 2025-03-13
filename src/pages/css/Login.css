@@ -35,6 +35,23 @@
   margin-top: 10px;
 }
 
+.register-link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.register-link span {
+  font-size: 16px;
+  color: #104572;
+}
+
+.register-link .btn-secondary {
+  font-size: 14px;
+}
+
 @media (max-width: 900px) {
   .login-container {
     gap: 50px;
@@ -46,6 +63,15 @@
 
   .login-form {
     width: 300px;
+  }
+
+  .register-link span {
+    font-size: 14px;
+  }
+  
+  .register-link .btn-secondary {
+    font-size: 14px;
+    padding: 8px 18px;
   }
 }
 
@@ -62,5 +88,14 @@
   .login-form {
     width: 100%;
     max-width: 280px;
+  }
+
+  .register-link span {
+    font-size: 13px;
+  }
+  
+  .register-link .btn-secondary {
+    font-size: 13px;
+    padding: 8px 15px;
   }
 }

@@ -13,4 +13,18 @@ const login = async (email, contraseña) => {
   return data;
 };
 
-export default { login };
+const register = async (userData) => {
+  const response = await fetch(`${API_BASE_URL}/familiares`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(userData),
+  });
+
+  const data = await response.json();
+  if (!response.ok) throw new Error(data.message || "Error en el registro");
+
+  return data;
+};
+
+const authService = { login, register };
+export default authService;

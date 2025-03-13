@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "../components/Button";
+import ButtonSecondary from "../components/ButtonSecondary";
 import authService from "../services/authService";
 import "./css/Login.css";
 
@@ -61,6 +62,14 @@ const Login = () => {
             required
           />
           <Button text="Ingresar" />
+
+          <div className="register-link">
+            <span>¿No tienes cuenta?</span>
+            <ButtonSecondary
+              text="Regístrate"
+              onClick={() => navigate("/register")}
+            />
+          </div>
         </form>
       </div>
     </div>
