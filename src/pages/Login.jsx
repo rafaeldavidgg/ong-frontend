@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 import Button from "../components/Button";
 import ButtonSecondary from "../components/ButtonSecondary";
 import authService from "../services/authService";
@@ -10,6 +11,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const { login } = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -18,6 +20,7 @@ const Login = () => {
     try {
       const data = await authService.login(email, password);
       localStorage.setItem("token", data.token);
+      login({ email: data.usuario.email, rol: data.usuario.tipo });
       navigate("/dashboard");
     } catch (err) {
       setError(err.message || "Error al iniciar sesión");

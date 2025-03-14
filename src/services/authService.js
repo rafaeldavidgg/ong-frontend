@@ -26,5 +26,14 @@ const register = async (userData) => {
   return data;
 };
 
-const authService = { login, register };
+const validateToken = async (token) => {
+  const response = await fetch(`${API_BASE_URL}/auth/validate-token`, {
+    method: "GET",
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  if (!response.ok) throw new Error("Token inválido");
+  return await response.json();
+};
+
+const authService = { login, register, validateToken };
 export default authService;
