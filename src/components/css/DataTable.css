@@ -1,0 +1,72 @@
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.data-table th:first-child,
+.data-table td:first-child {
+  width: 70px;
+  text-align: center;
+}
+
+.data-table th:not(:first-child),
+.data-table td:not(:first-child) {
+  width: auto;
+}
+
+.data-table th,
+.data-table td {
+  border-bottom: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.data-table th {
+  font-weight: bold;
+  text-align: left;
+}
+
+.data-table td:last-child {
+  text-align: center;
+}
+
+.asistencia-btn {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+.data-table td:first-child {
+  text-align: center;
+  width: 70px;
+}
+
+.view-btn {
+  background-color: #104572;
+  color: white;
+  border: none;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  height: 35px;
+}
+
+.view-btn i {
+  font-size: 20px;
+  padding-top: 2px;
+}

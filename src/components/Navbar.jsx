@@ -47,7 +47,7 @@ const Navbar = () => {
             className="menu-button"
             onClick={() => setLeftMenuOpen(!leftMenuOpen)}
           >
-            ▽
+            <i className="bi bi-chevron-down"></i>
           </button>
           {leftMenuOpen && (
             <div className="menu-dropdown left">
@@ -78,7 +78,7 @@ const Navbar = () => {
             className="menu-button"
             onClick={() => setRightMenuOpen(!rightMenuOpen)}
           >
-            ☰
+            <i className="bi bi-list"></i>
           </button>
           {rightMenuOpen && (
             <div className="menu-dropdown">
