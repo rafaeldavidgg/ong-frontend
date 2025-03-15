@@ -21,7 +21,7 @@ const Login = () => {
       const data = await authService.login(email, password);
       localStorage.setItem("token", data.token);
       login({ email: data.usuario.email, rol: data.usuario.tipo });
-      navigate("/dashboard");
+      navigate("/home");
     } catch (err) {
       setError(err.message || "Error al iniciar sesión");
     }

@@ -11,7 +11,7 @@ const NotFound = () => {
       <p>Página no encontrada</p>
       <ButtonSecondary
         text="Volver al inicio"
-        onClick={() => navigate("/login")}
+        onClick={() => navigate("/home")}
       />
     </div>
   );

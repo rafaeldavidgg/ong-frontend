@@ -8,20 +8,24 @@ export const useAuth = () => useContext(AuthContext);
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const checkToken = async () => {
       const token = localStorage.getItem("token");
-      if (!token) return;
+      if (!token) {
+        setLoading(false);
+        return;
+      }
 
       try {
         const data = await authService.validateToken(token);
-        console.log("Token válido, usuario autenticado:", data);
         setUser({ email: data.usuario.email, rol: data.usuario.tipo });
       } catch (error) {
-        console.error("Token inválido o expirado:", error);
         localStorage.removeItem("token");
         setUser(null);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -39,7 +43,10 @@ export const AuthProvider = ({ children }) => {
     setUser(null);
   };
 
-  const contextValue = useMemo(() => ({ user, login, logout }), [user]);
+  const contextValue = useMemo(
+    () => ({ user, loading, login, logout }),
+    [user, loading]
+  );
 
   return (
     <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>

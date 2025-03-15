@@ -1,0 +1,148 @@
+.navbar-wrapper {
+  display: flex;
+  align-items: center;
+  width: 100vw;
+  padding: 20px;
+  font-family: "Open Sans", Arial, sans-serif;
+}
+
+.navbar-logo-container {
+  display: flex;
+  align-items: center;
+  padding-right: 20px;
+}
+
+.navbar-logo {
+  height: 40px;
+}
+
+.navbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #104572;
+  border-radius: 5px;
+  padding: 5px 20px;
+  flex-grow: 1;
+}
+
+.navbar-nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 40px;
+}
+
+.navbar-link {
+  color: white;
+  text-decoration: none;
+  font-weight: normal;
+  transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.navbar-link:hover {
+  transform: scale(1.05);
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  min-width: 50px;
+}
+
+.menu-button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.menu-dropdown {
+  position: absolute;
+  right: 20px;
+  top: 65px;
+  background: white;
+  color: black;
+  border-radius: 5px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  width: 150px;
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-item {
+  padding: 10px;
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  border-bottom: 1px solid #ddd;
+}
+
+.menu-item:last-child {
+  border-bottom: none;
+}
+
+.menu-item:hover {
+  background: #f0f0f0;
+}
+
+.logout {
+  color: red;
+  border: none;
+  background: none;
+  text-align: left;
+  width: 100%;
+  cursor: pointer;
+}
+
+.logout:hover {
+  background: #ffe5e5;
+}
+
+.navbar-left {
+  display: none;
+  margin-right: auto;
+}
+
+.menu-dropdown.left {
+  left: 80px;
+}
+
+@media (max-width: 768px) {
+  .navbar-container {
+    justify-content: flex-end;
+    padding: 5px 20px;
+  }
+
+  .navbar-nav {
+    display: none;
+  }
+
+  .navbar-left {
+    display: flex;
+  }
+
+  .menu-item {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-wrapper {
+    padding: 5px 0;
+  }
+
+  .navbar-logo-container {
+    padding-left: 10px;
+  }
+
+  .navbar-logo {
+    height: 30px;
+  }
+
+  .menu-button {
+    font-size: 22px;
+  }
+}
