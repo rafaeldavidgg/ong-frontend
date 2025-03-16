@@ -26,6 +26,16 @@ export const validateField = (name, value) => {
         return "Debe ser un número positivo";
       }
       break;
+    case "email":
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
+        return "Debe ser un correo válido";
+      }
+      break;
+    case "contraseña":
+      if (value.length < 6) {
+        return "Debe tener al menos 6 caracteres";
+      }
+      break;
     default:
       return "";
   }

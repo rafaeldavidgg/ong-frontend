@@ -1,0 +1,29 @@
+.search-input-container {
+  position: relative;
+  display: flex;
+  width: 250px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px;
+  padding-right: 35px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+}
+
+.search-input::placeholder {
+  color: #aaa;
+}
+
+.search-input-container::after {
+  content: "\F52A";
+  font-family: "bootstrap-icons", sans-serif;
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 15px;
+  color: #aaa;
+}

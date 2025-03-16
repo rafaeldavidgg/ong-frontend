@@ -48,7 +48,7 @@ const Usuarios = () => {
         <PageTitle title="Usuarios" />
 
         <div className="usuarios-header">
-          {user.rol === "Tecnico" && <AddButton />}{" "}
+          {user.rol === "Tecnico" && <AddButton to="/crear-usuario" />}{" "}
           <FilterButton
             onFilter={handleFilterChange}
             activeFilter={filtroGrupoTrabajo}
