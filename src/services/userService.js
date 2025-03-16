@@ -1,8 +1,17 @@
 import API_BASE_URL from "../config";
 
-export const getUsuarios = async () => {
+export const getUsuarios = async (
+  page = 1,
+  limit = 10,
+  grupoTrabajo = null
+) => {
   try {
-    const response = await fetch(`${API_BASE_URL}/usuarios`, {
+    let url = `${API_BASE_URL}/usuarios?page=${page}&limit=${limit}`;
+    if (grupoTrabajo) {
+      url += `&grupoTrabajo=${grupoTrabajo}`;
+    }
+
+    const response = await fetch(url, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -17,7 +26,7 @@ export const getUsuarios = async () => {
     return await response.json();
   } catch (error) {
     console.error("Error en getUsuarios:", error);
-    return [];
+    return { usuarios: [], totalUsuarios: 0, totalPages: 1, currentPage: 1 };
   }
 };
 
