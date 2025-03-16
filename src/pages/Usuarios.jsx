@@ -7,6 +7,7 @@ import PageTitle from "../components/PageTitle";
 import DataTable from "../components/DataTable";
 import FilterButton from "../components/FilterButton";
 import AddButton from "../components/AddButton";
+import SearchInput from "../components/SearchInput"
 import { getTipoAutismoLabel } from "../utils/tipoAutismoUtils";
 import "./css/Usuarios.css";
 
@@ -16,20 +17,35 @@ const Usuarios = () => {
   const [usuarios, setUsuarios] = useState([]);
   const [loading, setLoading] = useState(true);
   const [filtroGrupoTrabajo, setFiltroGrupoTrabajo] = useState(null);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [debouncedSearchTerm, setDebouncedSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
 
   useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedSearchTerm(searchTerm);
+    }, 500);
+
+    return () => clearTimeout(handler);
+  }, [searchTerm]);
+
+  useEffect(() => {
     const fetchUsuarios = async () => {
       setLoading(true);
-      const data = await getUsuarios(currentPage, 10, filtroGrupoTrabajo);
+      const data = await getUsuarios(
+        currentPage,
+        10,
+        filtroGrupoTrabajo,
+        debouncedSearchTerm
+      );
       setUsuarios(data.usuarios);
-      setTotalPages(data.totalPages);
+      setTotalPages(data.totalPages > 0 ? data.totalPages : 1);
       setLoading(false);
     };
 
     fetchUsuarios();
-  }, [currentPage, filtroGrupoTrabajo]);
+  }, [currentPage, filtroGrupoTrabajo, debouncedSearchTerm]);
 
   const handleFilterChange = (grupo) => {
     setFiltroGrupoTrabajo(grupo);
@@ -54,6 +70,7 @@ const Usuarios = () => {
             activeFilter={filtroGrupoTrabajo}
             onClearFilter={clearFilter}
           />
+          <SearchInput searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
         </div>
 
         {loading ? (

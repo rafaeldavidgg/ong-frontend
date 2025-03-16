@@ -7,12 +7,13 @@
   background-color: #104572;
   color: white;
   border: none;
-  padding: 6px 15px;
+  padding: 8px 15px;
   border-radius: 5px;
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 10px;
+  margin-right: 20px;
 }
 
 .filter-btn:hover {

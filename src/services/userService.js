@@ -3,12 +3,18 @@ import API_BASE_URL from "../config";
 export const getUsuarios = async (
   page = 1,
   limit = 10,
-  grupoTrabajo = null
+  grupoTrabajo = null,
+  searchTerm = ""
 ) => {
   try {
     let url = `${API_BASE_URL}/usuarios?page=${page}&limit=${limit}`;
+
     if (grupoTrabajo) {
       url += `&grupoTrabajo=${grupoTrabajo}`;
+    }
+
+    if (searchTerm) {
+      url += `&search=${encodeURIComponent(searchTerm)}`;
     }
 
     const response = await fetch(url, {
@@ -26,7 +32,7 @@ export const getUsuarios = async (
     return await response.json();
   } catch (error) {
     console.error("Error en getUsuarios:", error);
-    return { usuarios: [], totalUsuarios: 0, totalPages: 1, currentPage: 1 };
+    return { usuarios: [], totalPages: 1, currentPage: 1 };
   }
 };
 
