@@ -21,10 +21,19 @@ const AppRoutes = () => {
 
       <Route element={<PrivateRoute />}>
         <Route path="/home" element={<Home />} />
-        <Route path="/mis-familiares" element={<MisFamiliares />} />
-        <Route path="/usuarios" element={<Usuarios />} />
         <Route path="/usuarios/:id" element={<UsuarioDetalle />} />
+      </Route>
+
+      <Route element={<PrivateRoute allowedRoles={["Tecnico", "Auxiliar"]} />}>
+        <Route path="/usuarios" element={<Usuarios />} />
+      </Route>
+
+      <Route element={<PrivateRoute allowedRoles={["Tecnico"]} />}>
         <Route path="/crear-usuario" element={<CrearUsuario />} />
+      </Route>
+
+      <Route element={<PrivateRoute allowedRoles={["Familiar"]} />}>
+        <Route path="/mis-familiares" element={<MisFamiliares />} />
       </Route>
     </Routes>
   );
