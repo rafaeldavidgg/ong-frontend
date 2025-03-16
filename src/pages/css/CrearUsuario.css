@@ -1,0 +1,58 @@
+.crear-usuario-container {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+  align-content: center;
+}
+
+.crear-usuario-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+  width: 100%;
+}
+
+.crear-usuario-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 800px;
+}
+
+.crear-usuario-form button {
+  margin-top: 30px;
+  background-color: #104572;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  max-width: 150px;
+}
+
+.crear-usuario-form button:hover {
+  background-color: #082c4a;
+}
+
+.form-field-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.error-text {
+  color: red;
+  font-size: 14px;
+  height: 16px;
+  margin-top: 5px;
+  margin-bottom: -3px;
+  white-space: normal;
+  word-wrap: break-word;
+}
+
+@media (max-width: 600px) {
+  .crear-usuario-grid {
+    grid-template-columns: 1fr;
+  }
+}

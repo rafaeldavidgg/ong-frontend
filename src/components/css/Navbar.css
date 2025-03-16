@@ -24,6 +24,7 @@
   border-radius: 5px;
   padding: 5px 20px;
   flex-grow: 1;
+  height: 50px;
 }
 
 .navbar-nav {

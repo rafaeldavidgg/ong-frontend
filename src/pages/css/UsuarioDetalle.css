@@ -1,0 +1,24 @@
+.usuario-detalle-container {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px 0px 20px 20px;
+}
+
+.usuario-detalle-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.volver-container {
+  margin-top: 30px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.usuario-detalle-container .volver-container .btn-secondary {
+  font-weight: bold;
+  background-color: transparent;
+  padding: 8px 20px;
+}

@@ -1,3 +1,8 @@
+.filter-btn-container {
+  position: relative;
+  display: inline-block;
+}
+
 .filter-btn {
   background-color: #104572;
   color: white;
@@ -5,4 +10,65 @@
   padding: 6px 15px;
   border-radius: 5px;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.filter-btn:hover {
+  background-color: #082c4a;
+}
+
+.clear-filter {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding-left: 8px;
+  padding-right: 0px;
+}
+
+.clear-filter i {
+  transition: transform 0.2s ease-in-out;
+}
+
+.clear-filter:hover i {
+  transform: scale(1.1);
+}
+
+.filter-input-container {
+  position: absolute;
+  top: 35px;
+  right: 0;
+  background: white;
+  border: 1px solid #ddd;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  border-radius: 5px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.filter-input {
+  width: 80px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.apply-filter-btn {
+  background-color: #104572;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.apply-filter-btn:hover {
+  background-color: #082c4a;
 }

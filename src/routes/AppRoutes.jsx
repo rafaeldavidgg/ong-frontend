@@ -7,6 +7,8 @@ import Logout from "../pages/Logout";
 import Home from "../pages/Home";
 import MisFamiliares from "../pages/MisFamiliares";
 import Usuarios from "../pages/Usuarios";
+import UsuarioDetalle from "../pages/UsuarioDetalle";
+import CrearUsuario from "../pages/CrearUsuario";
 
 const AppRoutes = () => {
   return (
@@ -21,6 +23,8 @@ const AppRoutes = () => {
         <Route path="/home" element={<Home />} />
         <Route path="/mis-familiares" element={<MisFamiliares />} />
         <Route path="/usuarios" element={<Usuarios />} />
+        <Route path="/usuarios/:id" element={<UsuarioDetalle />} />
+        <Route path="/crear-usuario" element={<CrearUsuario />} />
       </Route>
     </Routes>
   );

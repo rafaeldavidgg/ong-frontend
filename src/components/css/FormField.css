@@ -1,0 +1,50 @@
+.form-field {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.form-label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  font-size: 14px;
+  color: #333;
+}
+
+.form-input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  background-color: #f8f8f8;
+  color: #333;
+  transition: border-color 0.3s ease-in-out;
+  width: 100%;
+}
+
+.form-input:focus {
+  border-color: #104572;
+  outline: none;
+  background-color: white;
+}
+
+.form-input,
+select.form-input {
+  height: 40px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 8px 10px;
+  font-size: 16px;
+  width: 100%;
+  background-color: white;
+  appearance: none;
+}
+
+select.form-input option {
+  font-size: 16px;
+  padding: 8px;
+}
+
+select.form-input:hover {
+  border-color: #104572;
+}

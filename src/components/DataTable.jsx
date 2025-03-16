@@ -13,9 +13,9 @@ const DataTable = ({ columns, data }) => {
       </thead>
       <tbody>
         {data.map((row) => (
-          <tr key={row[0] || JSON.stringify(row)}>
-            {row.map((cell, index) => (
-              <td key={`${row[0]}-${index}`}>{cell}</td>
+          <tr key={row.key}>
+            {row.row.map((cell, index) => (
+              <td key={`${row.key}-${index}`}>{cell}</td>
             ))}
           </tr>
         ))}
