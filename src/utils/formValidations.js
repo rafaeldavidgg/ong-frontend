@@ -1,4 +1,4 @@
-export const validateField = (name, value) => {
+export const validateField = (name, value, isEditing = false) => {
   switch (name) {
     case "nombre":
     case "apellido":
@@ -7,32 +7,27 @@ export const validateField = (name, value) => {
       }
       break;
     case "telefono":
-      if (!/^\d{9}$/.test(value)) {
+      if (!isEditing && !value) return "Este campo es obligatorio";
+      if (value && !/^\d{9}$/.test(value)) {
         return "Debe contener exactamente 9 dígitos";
       }
       break;
     case "dni":
-      if (!/^\d{8}[A-Z]$/.test(value)) {
+      if (value && !/^\d{8}[A-Z]$/.test(value)) {
         return "Debe ser 8 números seguidos de 1 letra mayúscula";
       }
       break;
-    case "gradoAutismo":
-      if (isNaN(value) || value < 1 || value > 100) {
-        return "Debe ser un número entre 1 y 100";
-      }
-      break;
-    case "grupoTrabajo":
-      if (isNaN(value) || value < 1) {
-        return "Debe ser un número positivo";
-      }
+    case "tipoDeRelacionConUsuario":
+      if (!isEditing && !value) return "Este campo es obligatorio";
       break;
     case "email":
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
+      if (value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
         return "Debe ser un correo válido";
       }
       break;
     case "contraseña":
-      if (value.length < 6) {
+      if (!isEditing && !value) return "Este campo es obligatorio";
+      if (value && value.length < 6) {
         return "Debe tener al menos 6 caracteres";
       }
       break;

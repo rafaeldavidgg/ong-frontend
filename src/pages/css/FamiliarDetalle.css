@@ -1,24 +1,23 @@
-.trabajador-detalle-container {
+.familiar-detalle-container {
   max-width: 800px;
   margin: auto;
   padding: 20px 0px 20px 20px;
 }
 
-.trabajador-detalle-grid {
+.familiar-detalle-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 15px;
   margin-top: 20px;
 }
 
-.volver-container {
-  margin-top: 30px;
-  display: flex;
-  justify-content: space-between;
-}
-
-.trabajador-detalle-container .volver-container .btn-secondary {
+.familiar-detalle-container .volver-container .btn-secondary {
   font-weight: bold;
   background-color: transparent;
   padding: 8px 20px;
+}
+
+.familiar-detalle-container .volver-container .btn-primary {
+  width: auto;
+  margin-right: 55px;
 }

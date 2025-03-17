@@ -28,6 +28,7 @@ const Navbar = () => {
           { path: "/actividades", label: "Actividades" },
           { path: "/incidencias", label: "Incidencias" },
           { path: "/trabajadores", label: "Trabajadores" },
+          { path: "/familiares", label: "Familiares" },
           { path: "/solicitudes", label: "Solicitudes" },
         ];
       default:

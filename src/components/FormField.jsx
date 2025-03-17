@@ -1,7 +1,14 @@
 import PropTypes from "prop-types";
 import "./css/FormField.css";
 
-const FormField = ({ label, type = "text", value, onChange, name }) => {
+const FormField = ({
+  label,
+  type = "text",
+  value,
+  onChange,
+  name,
+  isRequired = true,
+}) => {
   return (
     <div className="form-field">
       <label className="form-label">{label}</label>
@@ -11,7 +18,7 @@ const FormField = ({ label, type = "text", value, onChange, name }) => {
         value={value}
         onChange={onChange}
         name={name}
-        required
+        required={isRequired}
       />
     </div>
   );
@@ -23,6 +30,7 @@ FormField.propTypes = {
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   onChange: PropTypes.func.isRequired,
   name: PropTypes.string.isRequired,
+  isRequired: PropTypes.bool,
 };
 
 export default FormField;

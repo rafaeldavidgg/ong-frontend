@@ -12,6 +12,9 @@ import CrearUsuario from "../pages/CrearUsuario";
 import Trabajadores from "../pages/Trabajadores";
 import TrabajadorDetalle from "../pages/TrabajadorDetalle";
 import CrearTrabajador from "../pages/CrearTrabajador";
+import Familiares from "../pages/Familiares";
+import FamiliarDetalle from "../pages/FamiliarDetalle";
+import EditarFamiliar from "../pages/EditarFamiliar";
 
 const AppRoutes = () => {
   return (
@@ -36,6 +39,9 @@ const AppRoutes = () => {
         <Route path="/trabajadores" element={<Trabajadores />} />
         <Route path="/trabajadores/:id" element={<TrabajadorDetalle />} />
         <Route path="/crear-trabajador" element={<CrearTrabajador />} />
+        <Route path="/familiares" element={<Familiares />} />
+        <Route path="/familiares/:id" element={<FamiliarDetalle />} />
+        <Route path="/editar-familiar/:id" element={<EditarFamiliar />} />
       </Route>
 
       <Route element={<PrivateRoute allowedRoles={["Familiar"]} />}>
