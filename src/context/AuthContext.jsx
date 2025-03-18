@@ -20,7 +20,9 @@ export const AuthProvider = ({ children }) => {
 
       try {
         const data = await authService.validateToken(token);
-        setUser({ email: data.usuario.email, rol: data.usuario.tipo });
+        if (data.usuario) {
+          setUser(data.usuario);
+        }
       } catch (error) {
         localStorage.removeItem("token");
         setUser(null);
@@ -32,13 +34,13 @@ export const AuthProvider = ({ children }) => {
     checkToken();
   }, []);
 
-  const login = (userData) => {
-    localStorage.setItem("user", JSON.stringify(userData));
+  const login = (userData, token) => {
+    localStorage.setItem("token", token);
     setUser(userData);
+    console.log(userData);
   };
 
   const logout = () => {
-    localStorage.removeItem("user");
     localStorage.removeItem("token");
     setUser(null);
   };

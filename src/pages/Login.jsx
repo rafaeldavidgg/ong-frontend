@@ -20,7 +20,7 @@ const Login = () => {
     try {
       const data = await authService.login(email, password);
       localStorage.setItem("token", data.token);
-      login({ email: data.usuario.email, rol: data.usuario.tipo });
+      login(data.usuario, data.token);
       navigate("/home");
     } catch (err) {
       setError(err.message || "Error al iniciar sesión");
@@ -29,7 +29,6 @@ const Login = () => {
 
   return (
     <div className="login-container">
-      {/* Sección del logo */}
       <div className="login-left">
         <img
           src={require("../assets/logo_completo.png")}
@@ -38,7 +37,6 @@ const Login = () => {
         />
       </div>
 
-      {/* Sección del formulario */}
       <div className="login-right">
         <form className="login-form" onSubmit={handleSubmit}>
           <h2>Iniciar Sesión</h2>
