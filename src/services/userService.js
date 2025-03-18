@@ -79,3 +79,35 @@ export const createUsuario = async (usuarioData) => {
     throw error;
   }
 };
+
+export const updateUsuario = async (id, usuarioData) => {
+  const response = await fetch(`${API_BASE_URL}/usuarios/${id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+    body: JSON.stringify(usuarioData),
+  });
+
+  if (!response.ok) {
+    throw new Error("Error al actualizar el usuario");
+  }
+
+  return await response.json();
+};
+
+export const deleteUsuario = async (id) => {
+  const response = await fetch(`${API_BASE_URL}/usuarios/${id}`, {
+    method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error("Error al eliminar el usuario");
+  }
+
+  return await response.json();
+};

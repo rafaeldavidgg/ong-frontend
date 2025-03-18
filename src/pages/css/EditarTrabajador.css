@@ -1,0 +1,85 @@
+.editar-trabajador-container {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+}
+
+.editar-trabajador-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+  width: 100%;
+}
+
+.editar-trabajador-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 800px;
+}
+
+.editar-trabajador-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 20px;
+  gap: 15px;
+  position: relative;
+}
+
+.editar-trabajador-buttons .save-button {
+  background-color: #104572;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  text-align: center;
+  display: inline-block;
+  width: 150px;
+}
+
+.editar-trabajador-buttons .save-button:hover {
+  background-color: #082c4a;
+}
+
+.editar-trabajador-buttons .delete-button {
+  background-color: red;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  position: absolute;
+  right: 0;
+}
+
+.editar-trabajador-buttons .delete-button:hover {
+  background-color: darkred;
+}
+
+.editar-trabajador-buttons .delete-button i {
+  font-size: 18px;
+}
+
+@media (max-width: 600px) {
+  .editar-trabajador-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .editar-trabajador-buttons .delete-button {
+    position: static;
+  }
+
+  .editar-trabajador-grid {
+    grid-template-columns: 1fr;
+  }
+}

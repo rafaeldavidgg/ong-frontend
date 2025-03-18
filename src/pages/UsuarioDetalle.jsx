@@ -8,6 +8,7 @@ import NotFound from "../pages/NotFound";
 import PageTitle from "../components/PageTitle";
 import { formatDate } from "../utils/dateUtils";
 import ButtonSecondary from "../components/ButtonSecondary";
+import Button from "../components/Button";
 import "./css/UsuarioDetalle.css";
 
 const UsuarioDetalle = () => {
@@ -57,6 +58,10 @@ const UsuarioDetalle = () => {
             onClick={() =>
               navigate(user.rol === "Familiar" ? "/inicio" : "/usuarios")
             }
+          />
+          <Button
+            text="Editar"
+            onClick={() => navigate(`/editar-usuario/${usuario._id}`)}
           />
         </div>
       </div>

@@ -73,3 +73,35 @@ export const createTrabajador = async (trabajadorData) => {
     throw error;
   }
 };
+
+export const updateTrabajador = async (id, trabajadorData) => {
+  const response = await fetch(`${API_BASE_URL}/trabajadores/${id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+    body: JSON.stringify(trabajadorData),
+  });
+
+  if (!response.ok) {
+    throw new Error("Error al actualizar el trabajador");
+  }
+
+  return await response.json();
+};
+
+export const deleteTrabajador = async (id) => {
+  const response = await fetch(`${API_BASE_URL}/trabajadores/${id}`, {
+    method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error("Error al eliminar el trabajador");
+  }
+
+  return await response.json();
+};

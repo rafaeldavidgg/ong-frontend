@@ -15,6 +15,8 @@ import CrearTrabajador from "../pages/CrearTrabajador";
 import Familiares from "../pages/Familiares";
 import FamiliarDetalle from "../pages/FamiliarDetalle";
 import EditarFamiliar from "../pages/EditarFamiliar";
+import EditarTrabajador from "../pages/EditarTrabajador"
+import EditarUsuario from "../pages/EditarUsuario";
 
 const AppRoutes = () => {
   return (
@@ -36,9 +38,11 @@ const AppRoutes = () => {
 
       <Route element={<PrivateRoute allowedRoles={["Tecnico"]} />}>
         <Route path="/crear-usuario" element={<CrearUsuario />} />
+        <Route path="/editar-usuario/:id" element={<EditarUsuario />} />
         <Route path="/trabajadores" element={<Trabajadores />} />
         <Route path="/trabajadores/:id" element={<TrabajadorDetalle />} />
         <Route path="/crear-trabajador" element={<CrearTrabajador />} />
+        <Route path="/editar-trabajador/:id" element={<EditarTrabajador />} />
         <Route path="/familiares" element={<Familiares />} />
         <Route path="/familiares/:id" element={<FamiliarDetalle />} />
         <Route path="/editar-familiar/:id" element={<EditarFamiliar />} />

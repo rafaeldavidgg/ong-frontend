@@ -22,3 +22,8 @@
   background-color: transparent;
   padding: 8px 20px;
 }
+
+.usuario-detalle-container .volver-container .btn-primary {
+  width: auto;
+  margin-right: 55px;
+}

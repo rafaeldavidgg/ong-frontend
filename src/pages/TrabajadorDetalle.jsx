@@ -8,6 +8,7 @@ import PageTitle from "../components/PageTitle";
 import { formatDate } from "../utils/dateUtils";
 import { getRoles } from "../utils/rolesUtils";
 import ButtonSecondary from "../components/ButtonSecondary";
+import Button from "../components/Button";
 import "./css/TrabajadorDetalle.css";
 
 const TrabajadorDetalle = () => {
@@ -52,6 +53,10 @@ const TrabajadorDetalle = () => {
           <ButtonSecondary
             text="Volver"
             onClick={() => navigate("/trabajadores")}
+          />
+          <Button
+            text="Editar"
+            onClick={() => navigate(`/editar-trabajador/${trabajador._id}`)}
           />
         </div>
       </div>
