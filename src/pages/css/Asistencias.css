@@ -1,0 +1,16 @@
+.asistencias-container {
+  padding: 20px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.asistencias-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  justify-content: flex-end;
+}
+
+.asistencias-container .data-table td:last-child {
+  text-align: left !important;
+}

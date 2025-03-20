@@ -18,6 +18,8 @@ import EditarFamiliar from "../pages/EditarFamiliar";
 import EditarTrabajador from "../pages/EditarTrabajador"
 import EditarUsuario from "../pages/EditarUsuario";
 import Perfil from "../pages/Perfil";
+import Asistencias from "../pages/Asistencias";
+import AsistenciaDetalle from "../pages/AsistenciaDetalle";
 
 const AppRoutes = () => {
   return (
@@ -48,6 +50,11 @@ const AppRoutes = () => {
         <Route path="/familiares" element={<Familiares />} />
         <Route path="/familiares/:id" element={<FamiliarDetalle />} />
         <Route path="/editar-familiar/:id" element={<EditarFamiliar />} />
+      </Route>
+
+      <Route element={<PrivateRoute allowedRoles={["Auxiliar"]} />}>
+        <Route path="/asistencias" element={<Asistencias />} />
+        <Route path="/asistencias/:id" element={<AsistenciaDetalle />} />
       </Route>
 
       <Route element={<PrivateRoute allowedRoles={["Familiar"]} />}>

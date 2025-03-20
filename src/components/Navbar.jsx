@@ -20,7 +20,7 @@ const Navbar = () => {
           { path: "/usuarios", label: "Usuarios" },
           { path: "/actividades", label: "Actividades" },
           { path: "/incidencias", label: "Incidencias" },
-          { path: "/asistencia", label: "Asistencia" },
+          { path: "/asistencias", label: "Faltas" },
         ];
       case "Tecnico":
         return [
