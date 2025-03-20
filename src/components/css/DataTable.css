@@ -35,7 +35,7 @@
 }
 
 .asistencia-btn {
-  background-color: red;
+  background-color: #104572;
   color: white;
   border: none;
   padding: 5px 10px;
@@ -45,6 +45,10 @@
   justify-content: center;
   align-items: center;
   margin: auto;
+}
+
+.asistencia-btn:hover {
+  background-color: #0d3a5c;
 }
 
 .data-table td:first-child {
@@ -64,6 +68,10 @@
   justify-content: center;
   width: 35px;
   height: 35px;
+}
+
+.view-btn:hover {
+  background-color: #0d3a5c;
 }
 
 .view-btn i {

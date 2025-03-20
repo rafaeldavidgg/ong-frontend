@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { getUsuarios } from "../services/userService";
@@ -7,7 +7,8 @@ import PageTitle from "../components/PageTitle";
 import DataTable from "../components/DataTable";
 import FilterButton from "../components/FilterButton";
 import AddButton from "../components/AddButton";
-import SearchInput from "../components/SearchInput"
+import SearchInput from "../components/SearchInput";
+import AsistenciaModal from "../components/AsistenciaModal";
 import { getTipoAutismoLabel } from "../utils/tipoAutismoUtils";
 import "./css/Usuarios.css";
 
@@ -21,6 +22,21 @@ const Usuarios = () => {
   const [debouncedSearchTerm, setDebouncedSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedUserId, setSelectedUserId] = useState(null);
+
+  const fetchUsuarios = useCallback(async () => {
+    setLoading(true);
+    const data = await getUsuarios(
+      currentPage,
+      10,
+      filtroGrupoTrabajo,
+      debouncedSearchTerm
+    );
+    setUsuarios(data.usuarios);
+    setTotalPages(data.totalPages > 0 ? data.totalPages : 1);
+    setLoading(false);
+  }, [currentPage, filtroGrupoTrabajo, debouncedSearchTerm]);
 
   useEffect(() => {
     const handler = setTimeout(() => {
@@ -31,21 +47,8 @@ const Usuarios = () => {
   }, [searchTerm]);
 
   useEffect(() => {
-    const fetchUsuarios = async () => {
-      setLoading(true);
-      const data = await getUsuarios(
-        currentPage,
-        10,
-        filtroGrupoTrabajo,
-        debouncedSearchTerm
-      );
-      setUsuarios(data.usuarios);
-      setTotalPages(data.totalPages > 0 ? data.totalPages : 1);
-      setLoading(false);
-    };
-
     fetchUsuarios();
-  }, [currentPage, filtroGrupoTrabajo, debouncedSearchTerm]);
+  }, [fetchUsuarios]);
 
   const handleFilterChange = (grupo) => {
     setFiltroGrupoTrabajo(grupo);
@@ -57,6 +60,11 @@ const Usuarios = () => {
     setCurrentPage(1);
   };
 
+  const openAsistenciaModal = (usuarioId) => {
+    setSelectedUserId(usuarioId);
+    setModalOpen(true);
+  };
+
   return (
     <>
       <Navbar />
@@ -64,7 +72,7 @@ const Usuarios = () => {
         <PageTitle title="Usuarios" />
 
         <div className="usuarios-header">
-          {user.rol === "Tecnico" && <AddButton to="/crear-usuario" />}{" "}
+          {user.rol === "Tecnico" && <AddButton to="/crear-usuario" />}
           <FilterButton
             onFilter={handleFilterChange}
             activeFilter={filtroGrupoTrabajo}
@@ -105,8 +113,9 @@ const Usuarios = () => {
                   <button
                     key={`asistencia-${u._id}`}
                     className="asistencia-btn"
+                    onClick={() => openAsistenciaModal(u._id)}
                   >
-                    ✖
+                    <i className="bi bi-calendar-x"></i>
                   </button>,
                 ],
               }))}
@@ -131,6 +140,12 @@ const Usuarios = () => {
           </>
         )}
       </div>
+      <AsistenciaModal
+        isOpen={modalOpen}
+        onClose={() => setModalOpen(false)}
+        usuarioId={selectedUserId}
+        onSuccess={fetchUsuarios}
+      />
     </>
   );
 };
