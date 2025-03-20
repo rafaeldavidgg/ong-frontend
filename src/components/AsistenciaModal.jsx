@@ -41,7 +41,7 @@ const AsistenciaModal = ({ isOpen, onClose, usuarioId, onSuccess }) => {
       onSuccess();
       onClose();
     } catch (error) {
-      setError("No se pudo registrar la asistencia.");
+      setError(error.message);
     }
 
     setLoading(false);

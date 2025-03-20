@@ -83,11 +83,13 @@ export const createAsistencia = async (asistenciaData) => {
       body: JSON.stringify(asistenciaData),
     });
 
+    const responseData = await response.json();
+
     if (!response.ok) {
-      throw new Error("Error al crear la asistencia");
+      throw new Error(responseData.message || "Error al crear la asistencia");
     }
 
-    return await response.json();
+    return responseData;
   } catch (error) {
     console.error("Error en createAsistencia:", error);
     throw error;

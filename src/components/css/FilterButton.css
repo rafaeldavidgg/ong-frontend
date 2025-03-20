@@ -14,6 +14,12 @@
   align-items: center;
   gap: 10px;
   margin-right: 20px;
+  margin-left: 20px !important;
+  min-width: 120px; /* Tamaño mínimo del botón */
+  max-width: 200px; /* Evita que sea demasiado grande */
+  white-space: nowrap; /* Evita que el texto salte de línea */
+  overflow: hidden; /* Oculta el texto que no cabe */
+  text-overflow: ellipsis;
 }
 
 .filter-btn:hover {
@@ -42,8 +48,8 @@
 
 .filter-input-container {
   position: absolute;
-  top: 35px;
-  right: 0;
+  top: 40px;
+  right: 20px;
   background: white;
   border: 1px solid #ddd;
   padding: 10px;
