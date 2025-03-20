@@ -56,6 +56,7 @@ const AsistenciaDetalle = () => {
           <DetailField
             label="Descripción"
             value={asistencia.descripcion || "-"}
+            isLongText={true}
           />
           <DetailField
             label="Usuario"

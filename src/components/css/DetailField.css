@@ -15,4 +15,13 @@
   border-radius: 5px;
   padding: 8px;
   width: 85%;
+  cursor: default;
+  outline: none;
+}
+
+.detail-textarea {
+  resize: none;
+  line-height: 1.4;
+  word-wrap: break-word;
+  white-space: pre-wrap;
 }

@@ -41,7 +41,11 @@ const FamiliarDetalle = () => {
           <DetailField label="Teléfono" value={familiar.telefono} />
           <DetailField label="DNI" value={familiar.dni} />
           <DetailField label="Email" value={familiar.email} />
-          <DetailField label="Relación" value={familiar.tipoDeRelacionConUsuario} />
+          <DetailField
+            label="Relación"
+            value={familiar.tipoDeRelacionConUsuario}
+            isLongText={true}
+          />
         </div>
 
         <div className="volver-container">
