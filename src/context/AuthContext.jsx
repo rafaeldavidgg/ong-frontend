@@ -22,6 +22,7 @@ export const AuthProvider = ({ children }) => {
         const data = await authService.validateToken(token);
         if (data.usuario) {
           setUser(data.usuario);
+          console.log(data.usuario);
         }
       } catch (error) {
         localStorage.removeItem("token");
@@ -37,7 +38,6 @@ export const AuthProvider = ({ children }) => {
   const login = (userData, token) => {
     localStorage.setItem("token", token);
     setUser(userData);
-    console.log(userData);
   };
 
   const logout = () => {

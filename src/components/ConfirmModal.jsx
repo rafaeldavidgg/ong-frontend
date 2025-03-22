@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import "./css/ConfirmModal.css";
 
-const ConfirmModal = ({ isOpen, onClose, onConfirm, message }) => {
+const ConfirmModal = ({ isOpen, onClose, onConfirm, message, confirmType = "" }) => {
   if (!isOpen) return null;
 
   return (
@@ -12,7 +12,12 @@ const ConfirmModal = ({ isOpen, onClose, onConfirm, message }) => {
           <button className="cancel-button" onClick={onClose}>
             Cancelar
           </button>
-          <button className="confirm-button" onClick={onConfirm}>
+          <button
+            className={`confirm-button ${
+              confirmType === "aceptar" ? "confirm-accept" : "confirm-reject"
+            }`}
+            onClick={onConfirm}
+          >
             Confirmar
           </button>
         </div>
@@ -26,6 +31,7 @@ ConfirmModal.propTypes = {
   onClose: PropTypes.func.isRequired,
   onConfirm: PropTypes.func.isRequired,
   message: PropTypes.string.isRequired,
+  confirmType: PropTypes.oneOf(["aceptar", "rechazar", ""]),
 };
 
 export default ConfirmModal;

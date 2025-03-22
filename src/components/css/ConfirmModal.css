@@ -40,7 +40,6 @@
 }
 
 .confirm-button {
-  background-color: red;
   color: white;
   border: none;
   padding: 10px 15px;
@@ -48,6 +47,18 @@
   cursor: pointer;
 }
 
-.confirm-button:hover {
+.confirm-accept {
+  background-color: #22c55e;
+}
+
+.confirm-accept:hover {
+  background-color: #16a34a;
+}
+
+.confirm-reject {
+  background-color: red;
+}
+
+.confirm-reject:hover {
   background-color: darkred;
 }

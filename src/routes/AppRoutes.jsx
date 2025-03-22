@@ -15,11 +15,13 @@ import CrearTrabajador from "../pages/CrearTrabajador";
 import Familiares from "../pages/Familiares";
 import FamiliarDetalle from "../pages/FamiliarDetalle";
 import EditarFamiliar from "../pages/EditarFamiliar";
-import EditarTrabajador from "../pages/EditarTrabajador"
+import EditarTrabajador from "../pages/EditarTrabajador";
 import EditarUsuario from "../pages/EditarUsuario";
 import Perfil from "../pages/Perfil";
 import Asistencias from "../pages/Asistencias";
 import AsistenciaDetalle from "../pages/AsistenciaDetalle";
+import SolicitarAsociacion from "../pages/SolicitarAsociacion";
+import Solicitudes from "../pages/Solicitudes";
 
 const AppRoutes = () => {
   return (
@@ -50,6 +52,7 @@ const AppRoutes = () => {
         <Route path="/familiares" element={<Familiares />} />
         <Route path="/familiares/:id" element={<FamiliarDetalle />} />
         <Route path="/editar-familiar/:id" element={<EditarFamiliar />} />
+        <Route path="/solicitudes" element={<Solicitudes />} />
       </Route>
 
       <Route element={<PrivateRoute allowedRoles={["Auxiliar"]} />}>
@@ -59,6 +62,7 @@ const AppRoutes = () => {
 
       <Route element={<PrivateRoute allowedRoles={["Familiar"]} />}>
         <Route path="/mis-familiares" element={<MisFamiliares />} />
+        <Route path="/solicitar-asociacion" element={<SolicitarAsociacion />} />
       </Route>
     </Routes>
   );

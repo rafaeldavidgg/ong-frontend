@@ -1,0 +1,85 @@
+.misfamiliares-container {
+  min-height: 100vh;
+  background-color: #f3f4f6;
+  font-family: "Open Sans", Arial, sans-serif;
+}
+
+.misfamiliares-content {
+  padding: 20px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.misfamiliares-empty {
+  text-align: center;
+  color: #4b5563;
+  margin-top: 70px;
+  font-size: 20px;
+}
+
+.misfamiliares-button-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.misfamiliares-button-wrapper .btn-primary {
+  width: auto;
+}
+
+.misfamiliares-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  max-width: 800px;
+  margin: 3rem auto 0;
+  row-gap: 4rem;
+  column-gap: 8rem;
+  justify-content: center;
+}
+
+.misfamiliares-card {
+  background-color: #fff;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+  border-radius: 1.5rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 250px;
+  transition: transform 0.2s ease;
+}
+
+.misfamiliares-card-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #104572;
+  text-align: center;
+  margin-bottom: 30px !important;
+}
+
+.misfamiliares-card-text {
+  font-size: 1rem;
+  color: #4b5563;
+}
+
+.misfamiliares-card-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: auto;
+}
+
+.misfamiliares-card-buttons .btn-secondary {
+  font-weight: bold;
+  padding: 8px 20px;
+  width: 100%;
+}
+
+.misfamiliares-card p,
+.misfamiliares-card h2 {
+  margin: 0;
+}
+
+.misfamiliares-card-spacer {
+  flex-grow: 1;
+}

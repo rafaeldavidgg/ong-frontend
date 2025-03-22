@@ -1,0 +1,47 @@
+.solicitudes-container {
+  padding: 20px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.solicitudes-header {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1rem;
+}
+
+.solicitudes-actions {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-start;
+}
+
+.btn-aceptar {
+  background-color: #22c55e;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 4px 8px;
+  cursor: pointer;
+}
+
+.btn-rechazar {
+  background-color: #ef4444;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 4px 8px;
+  cursor: pointer;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.solicitudes-container .data-table tr td:last-child {
+  text-align: left !important;
+}
