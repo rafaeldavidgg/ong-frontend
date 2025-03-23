@@ -56,7 +56,7 @@ const MisFamiliares = () => {
                   />
                   <ButtonSecondary
                     text="Datos personales"
-                    onClick={() => navigate("/datos-personales")}
+                    onClick={() => navigate(`/usuarios/${usuario._id}`)}
                   />
                 </div>
               </div>

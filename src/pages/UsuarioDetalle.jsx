@@ -56,13 +56,17 @@ const UsuarioDetalle = () => {
           <ButtonSecondary
             text="Volver"
             onClick={() =>
-              navigate(user.rol === "Familiar" ? "/inicio" : "/usuarios")
+              navigate(
+                user.rol === "Familiar" ? "/mis-familiares" : "/usuarios"
+              )
             }
           />
-          <Button
-            text="Editar"
-            onClick={() => navigate(`/editar-usuario/${usuario._id}`)}
-          />
+          {(user.rol === "Tecnico" || user.rol === "Auxiliar") && (
+            <Button
+              text="Editar"
+              onClick={() => navigate(`/editar-usuario/${usuario._id}`)}
+            />
+          )}
         </div>
       </div>
     </>
