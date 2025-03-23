@@ -1,9 +1,9 @@
-.filter-btn-container {
+.filtertipo-btn-container {
   position: relative;
   display: inline-block;
 }
 
-.filter-btn {
+.filtertipo-btn {
   background-color: #104572;
   color: white;
   border: none;
@@ -15,39 +15,20 @@
   gap: 10px;
   margin-right: 20px;
   margin-left: 20px !important;
-  min-width: 120px;
-  max-width: 200px;
+  min-width: 90px;
+  max-width: 100px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.filter-btn:hover {
+.filtertipo-btn:hover {
   background-color: #082c4a;
 }
 
-.clear-filter {
-  background: none;
-  border: none;
-  color: white;
-  font-size: 15px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  padding-left: 8px;
-  padding-right: 0px;
-}
-
-.clear-filter i {
-  transition: transform 0.2s ease-in-out;
-}
-
-.clear-filter:hover i {
-  transform: scale(1.1);
-}
-
-.filter-input-container {
+.filtertipo-input-container {
   position: absolute;
+  width: 300px;
   top: 40px;
   right: 20px;
   background: white;
@@ -55,27 +36,20 @@
   padding: 10px;
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 15px;
   border-radius: 5px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.filter-input {
-  width: 80px;
+.filtertipo-input {
+  width: 180px;
   padding: 5px;
   border: 1px solid #ccc;
   border-radius: 3px;
 }
 
-.apply-filter-btn {
-  background-color: #104572;
-  color: white;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 3px;
-  cursor: pointer;
-}
-
-.apply-filter-btn:hover {
-  background-color: #082c4a;
+@media (max-width: 600px) {
+  .filtertipo-input-container {
+    left: 18px;
+  }
 }

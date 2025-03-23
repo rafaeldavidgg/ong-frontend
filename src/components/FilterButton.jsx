@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import PropTypes from "prop-types";
 import "./css/FilterButton.css";
 
 const FilterButton = ({ onFilter, activeFilter, onClearFilter }) => {
@@ -72,6 +73,12 @@ const FilterButton = ({ onFilter, activeFilter, onClearFilter }) => {
       )}
     </div>
   );
+};
+
+FilterButton.propTypes = {
+  onFilter: PropTypes.func.isRequired,
+  activeFilter: PropTypes.array,
+  onClearFilter: PropTypes.func.isRequired,
 };
 
 export default FilterButton;
