@@ -8,6 +8,7 @@ const Navbar = () => {
   const { user, logout } = useAuth();
   const [leftMenuOpen, setLeftMenuOpen] = useState(false);
   const [rightMenuOpen, setRightMenuOpen] = useState(false);
+  const [activitiesMenuOpen, setActivitiesMenuOpen] = useState(false);
 
   if (!user) return null;
 
@@ -52,26 +53,85 @@ const Navbar = () => {
           </button>
           {leftMenuOpen && (
             <div className="menu-dropdown left">
-              {getLinks().map((link) => (
-                <Link
-                  key={link.path}
-                  to={link.path}
-                  className="menu-item"
-                  onClick={() => setLeftMenuOpen(false)}
-                >
-                  {link.label}
-                </Link>
-              ))}
+              {getLinks().flatMap((link) => {
+                if (link.label === "Actividades") {
+                  return [
+                    <Link
+                      key="/actividades"
+                      to="/actividades"
+                      className="menu-item"
+                      onClick={() => setLeftMenuOpen(false)}
+                    >
+                      Actividades
+                    </Link>,
+                    <Link
+                      key="/tipo-actividades"
+                      to="/tipo-actividades"
+                      className="menu-item"
+                      onClick={() => setLeftMenuOpen(false)}
+                    >
+                      Tipo de actividades
+                    </Link>,
+                  ];
+                }
+
+                return (
+                  <Link
+                    key={link.path}
+                    to={link.path}
+                    className="menu-item"
+                    onClick={() => setLeftMenuOpen(false)}
+                  >
+                    {link.label}
+                  </Link>
+                );
+              })}
             </div>
           )}
         </div>
 
         <div className="navbar-nav">
-          {getLinks().map((link) => (
-            <Link key={link.path} to={link.path} className="navbar-link">
-              {link.label}
-            </Link>
-          ))}
+          {getLinks().map((link) => {
+            if (link.label === "Actividades") {
+              return (
+                <>
+                  <button
+                    key="actividades"
+                    className="navbar-link actividades-dropdown-trigger"
+                    onClick={() => setActivitiesMenuOpen((prev) => !prev)}
+                    aria-haspopup="true"
+                    aria-expanded={activitiesMenuOpen}
+                  >
+                    Actividades
+                  </button>
+                  {activitiesMenuOpen && (
+                    <div className="menu-dropdown actividades-dropdown">
+                      <Link
+                        to="/actividades"
+                        className="menu-item"
+                        onClick={() => setActivitiesMenuOpen(false)}
+                      >
+                        Actividades
+                      </Link>
+                      <Link
+                        to="/tipo-actividades"
+                        className="menu-item"
+                        onClick={() => setActivitiesMenuOpen(false)}
+                      >
+                        Tipo de actividades
+                      </Link>
+                    </div>
+                  )}
+                </>
+              );
+            }
+
+            return (
+              <Link key={link.path} to={link.path} className="navbar-link">
+                {link.label}
+              </Link>
+            );
+          })}
         </div>
 
         <div className="navbar-right">
