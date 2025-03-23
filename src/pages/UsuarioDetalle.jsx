@@ -61,6 +61,12 @@ const UsuarioDetalle = () => {
               )
             }
           />
+          {user.rol === "Familiar" && (
+            <Button
+              text="Justificar faltas"
+              onClick={() => navigate(`/asistencias-usuario/${usuario._id}`)}
+            />
+          )}
           {(user.rol === "Tecnico" || user.rol === "Auxiliar") && (
             <Button
               text="Editar"

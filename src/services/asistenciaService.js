@@ -27,27 +27,34 @@ export const getAsistencias = async (page = 1, limit = 10, searchTerm = "") => {
   }
 };
 
-export const getAsistenciasByUsuario = async (usuarioId) => {
+export const getAsistenciasByUsuario = async (
+  usuarioId,
+  page = 1,
+  limit = 10,
+  search = ""
+) => {
   try {
-    const response = await fetch(
-      `${API_BASE_URL}/asistencias/usuario/${usuarioId}`,
-      {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    let url = `${API_BASE_URL}/asistencias/usuario/${usuarioId}?page=${page}&limit=${limit}`;
+
+    if (search) {
+      url += `&search=${encodeURIComponent(search)}`;
+    }
+
+    const response = await fetch(url, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
 
     if (!response.ok) {
-      throw new Error("Error al obtener las asistencias del usuario");
+      throw new Error("Error al obtener asistencias del usuario");
     }
 
     return await response.json();
   } catch (error) {
     console.error("Error en getAsistenciasByUsuario:", error);
-    return [];
+    return { asistencias: [], totalPages: 1, currentPage: 1 };
   }
 };
 

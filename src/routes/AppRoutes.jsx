@@ -22,6 +22,7 @@ import Asistencias from "../pages/Asistencias";
 import AsistenciaDetalle from "../pages/AsistenciaDetalle";
 import SolicitarAsociacion from "../pages/SolicitarAsociacion";
 import Solicitudes from "../pages/Solicitudes";
+import AsistenciasPorUsuario from "../pages/AsistenciasPorUsuario";
 
 const AppRoutes = () => {
   return (
@@ -63,6 +64,10 @@ const AppRoutes = () => {
       <Route element={<PrivateRoute allowedRoles={["Familiar"]} />}>
         <Route path="/mis-familiares" element={<MisFamiliares />} />
         <Route path="/solicitar-asociacion" element={<SolicitarAsociacion />} />
+        <Route
+          path="/asistencias-usuario/:usuarioId"
+          element={<AsistenciasPorUsuario />}
+        />
       </Route>
     </Routes>
   );
