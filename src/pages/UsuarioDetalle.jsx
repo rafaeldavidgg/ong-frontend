@@ -67,7 +67,7 @@ const UsuarioDetalle = () => {
               onClick={() => navigate(`/asistencias-usuario/${usuario._id}`)}
             />
           )}
-          {(user.rol === "Tecnico" || user.rol === "Auxiliar") && (
+          {user.rol === "Tecnico" && (
             <Button
               text="Editar"
               onClick={() => navigate(`/editar-usuario/${usuario._id}`)}

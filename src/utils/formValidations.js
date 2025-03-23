@@ -1,6 +1,7 @@
 export const validateField = (name, value, isEditing = false) => {
   switch (name) {
     case "nombre":
+    case "nombreTipo":
     case "apellido":
       if (!/^[a-zA-ZÁÉÍÓÚáéíóúÑñ\s]+$/.test(value)) {
         return "No puede contener números ni caracteres especiales";
@@ -29,6 +30,12 @@ export const validateField = (name, value, isEditing = false) => {
       if (!isEditing && !value) return "Este campo es obligatorio";
       if (value && value.length < 6) {
         return "Debe tener al menos 6 caracteres";
+      }
+      break;
+    case "duracion":
+      if (!value) return "Este campo es obligatorio";
+      if (isNaN(value) || Number(value) <= 0) {
+        return "La duración debe ser un número mayor que 0";
       }
       break;
     default:

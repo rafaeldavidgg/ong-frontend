@@ -23,6 +23,10 @@ import AsistenciaDetalle from "../pages/AsistenciaDetalle";
 import SolicitarAsociacion from "../pages/SolicitarAsociacion";
 import Solicitudes from "../pages/Solicitudes";
 import AsistenciasPorUsuario from "../pages/AsistenciasPorUsuario";
+import TipoActividades from "../pages/TipoActividades";
+import CrearTipoActividad from "../pages/CrearTipoActividad";
+import TipoActividadDetalle from "../pages/TipoActividadDetalle";
+import EditarTipoActividad from "../pages/EditarTipoActividad";
 
 const AppRoutes = () => {
   return (
@@ -41,6 +45,11 @@ const AppRoutes = () => {
 
       <Route element={<PrivateRoute allowedRoles={["Tecnico", "Auxiliar"]} />}>
         <Route path="/usuarios" element={<Usuarios />} />
+        <Route path="/tipo-actividades" element={<TipoActividades />} />
+        <Route
+          path="/tipo-actividades/:id"
+          element={<TipoActividadDetalle />}
+        />
       </Route>
 
       <Route element={<PrivateRoute allowedRoles={["Tecnico"]} />}>
@@ -54,6 +63,11 @@ const AppRoutes = () => {
         <Route path="/familiares/:id" element={<FamiliarDetalle />} />
         <Route path="/editar-familiar/:id" element={<EditarFamiliar />} />
         <Route path="/solicitudes" element={<Solicitudes />} />
+        <Route path="/crear-tipo-actividad" element={<CrearTipoActividad />} />
+        <Route
+          path="/editar-tipo-actividad/:id"
+          element={<EditarTipoActividad />}
+        />
       </Route>
 
       <Route element={<PrivateRoute allowedRoles={["Auxiliar"]} />}>
