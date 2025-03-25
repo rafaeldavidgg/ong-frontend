@@ -1,20 +1,20 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";
-import { getActividades } from "../services/actividadService";
+import { useNavigate, useParams } from "react-router-dom";
+import { getActividadesPorUsuario } from "../services/actividadService";
+import { getUsuarioById } from "../services/userService";
 import { formatDate } from "../utils/dateUtils";
 import Navbar from "../components/Navbar";
 import PageTitle from "../components/PageTitle";
 import DataTable from "../components/DataTable";
-import AddButton from "../components/AddButton";
 import SearchInput from "../components/SearchInput";
 import FilterTipoButton from "../components/FilterTipoButton";
 import "./css/Usuarios.css";
 
-const Actividades = () => {
-  const { user } = useAuth();
+const ActividadesPorUsuario = () => {
+  const { id } = useParams();
   const navigate = useNavigate();
   const [actividades, setActividades] = useState([]);
+  const [usuario, setUsuario] = useState(null);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
   const [debouncedSearchTerm, setDebouncedSearchTerm] = useState("");
@@ -32,7 +32,8 @@ const Actividades = () => {
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
-      const data = await getActividades(
+      const data = await getActividadesPorUsuario(
+        id,
         currentPage,
         10,
         debouncedSearchTerm,
@@ -42,9 +43,14 @@ const Actividades = () => {
       setTotalPages(data.totalPages > 0 ? data.totalPages : 1);
       setLoading(false);
     };
-
     fetchData();
-  }, [currentPage, debouncedSearchTerm, filtroTipos]);
+
+    const fetchUsuario = async () => {
+      const data = await getUsuarioById(id);
+      setUsuario(data);
+    };
+    fetchUsuario();
+  }, [id, currentPage, debouncedSearchTerm, filtroTipos]);
 
   const handleFilterTipoChange = (tipos) => {
     setFiltroTipos(tipos);
@@ -60,10 +66,13 @@ const Actividades = () => {
     <>
       <Navbar />
       <div className="actividades-container">
-        <PageTitle title="Actividades" />
+        <PageTitle
+          title={`Actividades de ${
+            usuario ? usuario.nombre + " " + usuario.apellido : "..."
+          }`}
+        />
 
         <div className="usuarios-header">
-          {user.rol === "Tecnico" && <AddButton to="/crear-actividad" />}
           <FilterTipoButton
             onFilter={handleFilterTipoChange}
             activeFilter={filtroTipos}
@@ -124,4 +133,4 @@ const Actividades = () => {
   );
 };
 
-export default Actividades;
+export default ActividadesPorUsuario;

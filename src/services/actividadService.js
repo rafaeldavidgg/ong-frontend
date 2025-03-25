@@ -121,3 +121,40 @@ export const deleteActividad = async (id) => {
     throw error;
   }
 };
+
+export const getActividadesPorUsuario = async (
+  usuarioId,
+  page = 1,
+  limit = 10,
+  searchTerm = "",
+  tipos = []
+) => {
+  try {
+    let url = `${API_BASE_URL}/actividades/usuario?page=${page}&limit=${limit}&usuarioId=${usuarioId}`;
+
+    if (searchTerm) {
+      url += `&search=${encodeURIComponent(searchTerm)}`;
+    }
+
+    if (tipos.length > 0) {
+      url += tipos.map((t) => `&tipos=${encodeURIComponent(t)}`).join("");
+    }
+
+    const response = await fetch(url, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error("Error al obtener las actividades del usuario");
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error("Error en getActividadesPorUsuario:", error);
+    return { actividades: [], totalPages: 1, currentPage: 1 };
+  }
+};

@@ -45,23 +45,27 @@ const ActividadDetalle = () => {
             label="Tipo"
             value={actividad.tipoActividad?.nombreTipo || "—"}
           />
-          <DetailField
-            label="Creador"
-            value={`${actividad.creadaPor?.nombre || ""} ${
-              actividad.creadaPor?.apellido || ""
-            }`}
-          />
-          <DetailField
-            label="Usuarios participantes"
-            value={
-              actividad.realizadaPor?.length > 0
-                ? actividad.realizadaPor
-                    .map((u) => `- ${u.nombre} ${u.apellido}`)
-                    .join("\n")
-                : "—"
-            }
-            isLongText={true}
-          />
+          {user.rol !== "Familiar" && (
+            <DetailField
+              label="Creador"
+              value={`${actividad.creadaPor?.nombre || ""} ${
+                actividad.creadaPor?.apellido || ""
+              }`}
+            />
+          )}
+          {user.rol !== "Familiar" && (
+            <DetailField
+              label="Usuarios participantes"
+              value={
+                actividad.realizadaPor?.length > 0
+                  ? actividad.realizadaPor
+                      .map((u) => `- ${u.nombre} ${u.apellido}`)
+                      .join("\n")
+                  : "—"
+              }
+              isLongText={true}
+            />
+          )}
           <DetailField
             label="Ejecutada por"
             value={

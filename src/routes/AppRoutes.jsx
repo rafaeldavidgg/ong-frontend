@@ -31,6 +31,7 @@ import Actividades from "../pages/Actividades";
 import CrearActividad from "../pages/CrearActividad";
 import ActividadDetalle from "../pages/ActividadDetalle";
 import EditarActividad from "../pages/EditarActividad";
+import ActividadesPorUsuario from "../pages/ActividadesPorUsuario";
 
 const AppRoutes = () => {
   return (
@@ -89,6 +90,10 @@ const AppRoutes = () => {
         <Route
           path="/asistencias-usuario/:usuarioId"
           element={<AsistenciasPorUsuario />}
+        />
+        <Route
+          path="/actividades-usuario/:id"
+          element={<ActividadesPorUsuario />}
         />
       </Route>
     </Routes>
