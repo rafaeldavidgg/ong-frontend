@@ -127,6 +127,15 @@ const EditarTrabajador = () => {
       <div className="editar-trabajador-container">
         <PageTitle title="Editar trabajador" />
 
+        {errors.general && (
+          <div className="error">
+            <span>{errors.general}</span>
+            <button className="close-error" onClick={() => setErrors({})}>
+              ✖
+            </button>
+          </div>
+        )}
+
         <form onSubmit={handleSubmit} className="editar-trabajador-form">
           <div className="editar-trabajador-grid">
             <div className="form-field-container">

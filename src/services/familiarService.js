@@ -82,11 +82,13 @@ export const updateFamiliar = async (id, familiarData) => {
       body: JSON.stringify(familiarData),
     });
 
+    const data = await response.json();
+
     if (!response.ok) {
-      throw new Error("Error al actualizar el familiar");
+      throw new Error(data.message || "Error al actualizar el familiar");
     }
 
-    return await response.json();
+    return data;
   } catch (error) {
     console.error("Error en updateFamiliar:", error);
     throw error;

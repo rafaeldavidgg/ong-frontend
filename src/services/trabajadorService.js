@@ -63,11 +63,13 @@ export const createTrabajador = async (trabajadorData) => {
       body: JSON.stringify(trabajadorData),
     });
 
+    const data = await response.json();
+
     if (!response.ok) {
-      throw new Error("Error al crear el trabajador");
+      throw new Error(data.message || "Error al crear el trabajador");
     }
 
-    return await response.json();
+    return data;
   } catch (error) {
     console.error("Error en createTrabajador:", error);
     throw error;
@@ -84,11 +86,13 @@ export const updateTrabajador = async (id, trabajadorData) => {
     body: JSON.stringify(trabajadorData),
   });
 
+  const data = await response.json();
+
   if (!response.ok) {
-    throw new Error("Error al actualizar el trabajador");
+    throw new Error(data.message || "Error al actualizar el trabajador");
   }
 
-  return await response.json();
+  return data;
 };
 
 export const deleteTrabajador = async (id) => {

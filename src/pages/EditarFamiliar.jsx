@@ -122,6 +122,15 @@ const EditarFamiliar = () => {
       <div className="editar-familiar-container">
         <PageTitle title="Editar familiar" />
 
+        {errors.general && (
+          <div className="error">
+            <span>{errors.general}</span>
+            <button className="close-error" onClick={() => setErrors({})}>
+              ✖
+            </button>
+          </div>
+        )}
+
         <form onSubmit={handleSubmit} className="editar-familiar-form">
           <div className="editar-familiar-grid">
             <div className="form-field-container">
@@ -221,7 +230,11 @@ const EditarFamiliar = () => {
           </div>
 
           <div className="editar-familiar-buttons">
-            <button type="button" className="delete-button" onClick={handleDeleteClick}>
+            <button
+              type="button"
+              className="delete-button"
+              onClick={handleDeleteClick}
+            >
               <i className="bi bi-trash"></i>
             </button>
             <button type="submit" className="save-button">

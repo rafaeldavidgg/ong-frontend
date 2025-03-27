@@ -81,6 +81,15 @@ const CrearTrabajador = () => {
       <div className="crear-trabajador-container">
         <PageTitle title="Nuevo trabajador" />
 
+        {errors.general && (
+          <div className="error">
+            <span>{errors.general}</span>
+            <button className="close-error" onClick={() => setErrors({})}>
+              ✖
+            </button>
+          </div>
+        )}
+
         <form onSubmit={handleSubmit} className="crear-trabajador-form">
           <div className="crear-trabajador-grid">
             <div className="form-field-container">
