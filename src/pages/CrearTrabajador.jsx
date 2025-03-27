@@ -176,7 +176,7 @@ const CrearTrabajador = () => {
                   Selecciona un tipo
                 </option>
                 {Object.entries(TipoTrabajadorEnum).map(([key, label]) => (
-                  <option key={key} value={label}>
+                  <option key={key} value={key}>
                     {label}
                   </option>
                 ))}

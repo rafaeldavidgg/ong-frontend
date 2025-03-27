@@ -8,6 +8,7 @@ import Button from "../components/Button";
 import ButtonSecondary from "../components/ButtonSecondary";
 import NotFound from "./NotFound";
 import { getActividadById } from "../services/actividadService";
+import { generateActividadPDF } from "../utils/pdfUtils";
 import "./css/UsuarioDetalle.css";
 
 const ActividadDetalle = () => {
@@ -33,7 +34,18 @@ const ActividadDetalle = () => {
     <>
       <Navbar />
       <div className="usuario-detalle-container">
-        <PageTitle title={`Detalle de ${actividad.nombre}`} />
+        <div className="titulo-con-icono">
+          <PageTitle title={`Detalle de ${actividad.nombre}`} />
+          {user.rol === "Tecnico" && (
+            <button
+              className="pdf-icon-btn"
+              onClick={() => generateActividadPDF(actividad)}
+              aria-label="Generar informe PDF"
+            >
+              <i className="bi bi-file-earmark-pdf"></i>
+            </button>
+          )}
+        </div>
 
         <div className="usuario-detalle-grid">
           <DetailField label="Nombre" value={actividad.nombre} />
