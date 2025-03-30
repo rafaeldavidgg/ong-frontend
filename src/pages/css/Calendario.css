@@ -1,0 +1,11 @@
+.calendario-container {
+  font-family: "Open Sans", Arial, sans-serif;
+  min-height: 100vh;
+  background-color: #f3f4f6;
+}
+
+.calendario-content {
+  padding: 20px;
+  max-width: 1000px;
+  margin: auto;
+}

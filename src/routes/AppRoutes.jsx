@@ -32,6 +32,7 @@ import CrearActividad from "../pages/CrearActividad";
 import ActividadDetalle from "../pages/ActividadDetalle";
 import EditarActividad from "../pages/EditarActividad";
 import ActividadesPorUsuario from "../pages/ActividadesPorUsuario";
+import Calendario from "../pages/Calendario";
 
 const AppRoutes = () => {
   return (
@@ -95,6 +96,7 @@ const AppRoutes = () => {
           path="/actividades-usuario/:id"
           element={<ActividadesPorUsuario />}
         />
+        <Route path="/calendario/:usuarioId" element={<Calendario />} />
       </Route>
     </Routes>
   );

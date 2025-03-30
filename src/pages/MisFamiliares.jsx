@@ -53,7 +53,7 @@ const MisFamiliares = () => {
             <div className="misfamiliares-card-buttons">
               <ButtonSecondary
                 text="Calendario"
-                onClick={() => navigate("/calendario")}
+                onClick={() => navigate(`/calendario/${usuario._id}`)}
               />
               <ButtonSecondary
                 text="Actividades"

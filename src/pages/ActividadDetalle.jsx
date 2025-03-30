@@ -94,7 +94,7 @@ const ActividadDetalle = () => {
         <div className="volver-container">
           <ButtonSecondary
             text="Volver"
-            onClick={() => navigate("/actividades")}
+            onClick={() => navigate(-1)}
           />
           {user.rol === "Tecnico" && (
             <Button
