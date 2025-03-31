@@ -7,6 +7,7 @@ import DetailField from "../components/DetailField";
 import Button from "../components/Button";
 import ButtonSecondary from "../components/ButtonSecondary";
 import NotFound from "./NotFound";
+import { formatDate } from "../utils/dateUtils";
 import { getActividadById } from "../services/actividadService";
 import { generateActividadPDF } from "../utils/pdfUtils";
 import "./css/UsuarioDetalle.css";
@@ -49,10 +50,7 @@ const ActividadDetalle = () => {
 
         <div className="usuario-detalle-grid">
           <DetailField label="Nombre" value={actividad.nombre} />
-          <DetailField
-            label="Fecha"
-            value={new Date(actividad.fecha).toLocaleDateString()}
-          />
+          <DetailField label="Fecha" value={formatDate(actividad.fecha)} />
           <DetailField
             label="Tipo"
             value={actividad.tipoActividad?.nombreTipo || "—"}
@@ -92,10 +90,7 @@ const ActividadDetalle = () => {
         </div>
 
         <div className="volver-container">
-          <ButtonSecondary
-            text="Volver"
-            onClick={() => navigate(-1)}
-          />
+          <ButtonSecondary text="Volver" onClick={() => navigate(-1)} />
           {user.rol === "Tecnico" && (
             <Button
               text="Editar"
