@@ -18,6 +18,8 @@ const Calendario = () => {
   const navigate = useNavigate();
   const [eventos, setEventos] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [currentView, setCurrentView] = useState("month");
+  const [currentDate, setCurrentDate] = useState(new Date());
 
   useEffect(() => {
     const fetchActividades = async () => {
@@ -74,6 +76,11 @@ const Calendario = () => {
               },
             })}
             onSelectEvent={(evento) => navigate(`/actividades/${evento.id}`)}
+            views={["month", "week", "day", "agenda"]}
+            view={currentView}
+            onView={setCurrentView}
+            date={currentDate}
+            onNavigate={(date) => setCurrentDate(date)}
           />
         )}
       </div>
