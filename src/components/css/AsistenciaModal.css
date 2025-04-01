@@ -93,6 +93,17 @@
   font-size: 16px;
   background-color: white;
   transition: border-color 0.3s ease-in-out;
+}
+
+.modal-container .form-input-big {
+  width: 46% !important;
+  text-align: left;
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: white;
+  transition: border-color 0.3s ease-in-out;
   min-height: 100px;
 }
 

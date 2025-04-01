@@ -60,7 +60,7 @@ const JustificarFaltaModal = ({ isOpen, onClose, asistencia, onSuccess }) => {
           </label>
           <textarea
             id="descripcion"
-            className="form-input"
+            className="form-input-big"
             rows={3}
             value={descripcion}
             onChange={(e) => setDescripcion(e.target.value)}
