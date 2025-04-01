@@ -86,7 +86,7 @@ const ActividadesPorUsuario = () => {
         ) : (
           <>
             <DataTable
-              columns={["", "Nombre", "Fecha", "Tipo", "Creador"]}
+              columns={["", "Nombre", "Fecha", "Tipo"]}
               data={actividades.map((a) => ({
                 key: a._id,
                 row: [
@@ -101,9 +101,6 @@ const ActividadesPorUsuario = () => {
                   <span key={`fecha-${a._id}`}>{formatDate(a.fecha)}</span>,
                   <span key={`tipo-${a._id}`}>
                     {a.tipoActividad?.nombreTipo || "—"}
-                  </span>,
-                  <span key={`creador-${a._id}`}>
-                    {a.creadaPor?.nombre} {a.creadaPor?.apellido}
                   </span>,
                 ],
               }))}

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { updateAsistencia } from "../services/asistenciaService";
+import { formatDate } from "../utils/dateUtils";
 import { useAuth } from "../context/AuthContext";
 import "./css/AsistenciaModal.css";
 import "./css/FormField.css";
@@ -50,7 +51,7 @@ const JustificarFaltaModal = ({ isOpen, onClose, asistencia, onSuccess }) => {
         <h2 className="modal-title">Justificar falta</h2>
         <p className="modal-subtitle">
           {asistencia.usuario?.nombre} {asistencia.usuario?.apellido} -{" "}
-          {new Date(asistencia.fecha).toLocaleDateString()}
+          {formatDate(asistencia.fecha)}
         </p>
 
         <div className="form-field">

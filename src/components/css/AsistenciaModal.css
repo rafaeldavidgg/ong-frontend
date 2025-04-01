@@ -17,7 +17,7 @@
   border-radius: 8px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
   text-align: center;
-  width: 340px;
+  width: 450px;
 }
 
 .modal-title {
@@ -93,6 +93,7 @@
   font-size: 16px;
   background-color: white;
   transition: border-color 0.3s ease-in-out;
+  min-height: 100px;
 }
 
 .modal-container .form-input:focus {
