@@ -2,6 +2,9 @@ import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable";
 import { formatDate } from "./dateUtils";
 import logo from "../assets/logo.png";
+import { format } from "date-fns";
+import { es } from "date-fns/locale";
+import { getTipoAutismoLabel } from "./tipoAutismoUtils";
 
 const PRIMARY_COLOR = [16, 69, 114];
 const TEXT_COLOR = [0, 0, 0];
@@ -142,6 +145,128 @@ export const generateActividadPDF = (actividad) => {
       margin: { left: 110 },
       tableWidth: 80,
     });
+
+    doc.output("dataurlnewwindow");
+  };
+};
+
+export const generateInformeUsuarioPDF = (
+  usuario,
+  actividades,
+  mesSeleccionado
+) => {
+  const doc = new jsPDF();
+
+  const fechaFormateada = new Date().toLocaleDateString("es-ES", {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+  });
+
+  const [year, month] = mesSeleccionado.split("-");
+  const nombreMes = format(new Date(year, month - 1), "MMMM yyyy", {
+    locale: es,
+  });
+
+  const pageWidth = doc.internal.pageSize.getWidth();
+  const marginX = 15;
+  const logoWidth = 15;
+  const logoHeight = 15;
+  let y = 20;
+
+  const img = new Image();
+  img.src = logo;
+
+  img.onload = () => {
+    doc.addImage(
+      img,
+      "PNG",
+      pageWidth - marginX - logoWidth,
+      y - 5,
+      logoWidth,
+      logoHeight
+    );
+
+    doc.setFontSize(20);
+    doc.setTextColor(...PRIMARY_COLOR);
+    doc.setFont("helvetica", "bold");
+    doc.text("Informe de actividades", marginX, y);
+
+    y += LINE_HEIGHT;
+
+    doc.setFontSize(14);
+    doc.setFont("helvetica", "normal");
+    doc.setTextColor(...TEXT_COLOR);
+    doc.text(`${nombreMes}`, marginX, y);
+
+    y += LINE_HEIGHT * 1.5;
+
+    doc.setFontSize(12);
+    doc.setTextColor(...PRIMARY_COLOR);
+    doc.setFont("helvetica", "bold");
+    doc.text("Datos del usuario:", marginX, y);
+
+    y += LINE_HEIGHT;
+
+    doc.setFont("helvetica", "normal");
+    doc.setTextColor(...TEXT_COLOR);
+    doc.text(`Nombre: ${usuario.nombre} ${usuario.apellido}`, marginX, y);
+    y += LINE_HEIGHT;
+    doc.text(`DNI: ${usuario.dni}`, marginX, y);
+    y += LINE_HEIGHT;
+    doc.text(
+      `Fecha de nacimiento: ${format(
+        new Date(usuario.fechaNacimiento),
+        "dd/MM/yyyy"
+      )}`,
+      marginX,
+      y
+    );
+    y += LINE_HEIGHT;
+    doc.text(
+      `Tipo de autismo: ${getTipoAutismoLabel(usuario.tipoAutismo)}`,
+      marginX,
+      y
+    );
+    y += LINE_HEIGHT;
+    doc.text(`Grado de autismo: ${usuario.gradoAutismo}%`, marginX, y);
+    y += LINE_HEIGHT;
+    doc.text(`Grupo de trabajo: ${usuario.grupoTrabajo}`, marginX, y);
+    y += LINE_HEIGHT * 1.5;
+
+    if (actividades.length === 0) {
+      doc.setTextColor(150, 0, 0);
+      doc.text("No hay actividades registradas este mes.", marginX, y);
+    } else {
+      autoTable(doc, {
+        startY: y,
+        head: [["Nombre", "Fecha", "Tipo"]],
+        body: actividades.map((a) => [
+          a.nombre,
+          format(new Date(a.fecha), "dd/MM/yyyy"),
+          a.tipoActividad?.nombreTipo || "—",
+        ]),
+        headStyles: {
+          fillColor: PRIMARY_COLOR,
+          textColor: [255, 255, 255],
+          halign: "left",
+          fontStyle: "bold",
+        },
+        styles: {
+          fontSize: 11,
+          textColor: TEXT_COLOR,
+          cellPadding: 3,
+        },
+        margin: { left: marginX },
+      });
+    }
+
+    doc.setTextColor(...TEXT_COLOR);
+    doc.text(
+      `Fecha de generación: ${fechaFormateada}`,
+      marginX,
+      doc.internal.pageSize.height - 10
+    );
 
     doc.output("dataurlnewwindow");
   };

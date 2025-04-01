@@ -44,3 +44,28 @@
   border-radius: 50%;
   padding: 10px;
 }
+
+.generar-pdf-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  margin-bottom: 30px;
+}
+
+.generar-pdf-label {
+  font-weight: 600;
+}
+
+.generar-pdf-input {
+  padding: 0.4rem 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.95rem;
+}
+
+.usuario-detalle-container .generar-pdf-button .btn-primary {
+  width: auto;
+  font-size: 0.95rem;
+}

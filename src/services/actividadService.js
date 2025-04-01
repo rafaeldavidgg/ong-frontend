@@ -158,3 +158,26 @@ export const getActividadesPorUsuario = async (
     return { actividades: [], totalPages: 1, currentPage: 1 };
   }
 };
+
+export const getActividadesPorUsuarioYMes = async (usuarioId, year, month) => {
+  try {
+    const url = `${API_BASE_URL}/actividades/por-usuario/${usuarioId}?year=${year}&month=${month}`;
+
+    const response = await fetch(url, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error("Error al obtener las actividades por mes");
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error("Error en getActividadesPorUsuarioYMes:", error);
+    return [];
+  }
+};

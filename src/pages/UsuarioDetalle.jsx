@@ -10,6 +10,8 @@ import { formatDate } from "../utils/dateUtils";
 import { getTipoAutismoLabel } from "../utils/tipoAutismoUtils";
 import ButtonSecondary from "../components/ButtonSecondary";
 import Button from "../components/Button";
+import { generateInformeUsuarioPDF } from "../utils/pdfUtils";
+import { getActividadesPorUsuarioYMes } from "../services/actividadService";
 import "./css/UsuarioDetalle.css";
 
 const UsuarioDetalle = () => {
@@ -18,6 +20,20 @@ const UsuarioDetalle = () => {
   const { user } = useAuth();
   const [usuario, setUsuario] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [selectedMonth, setSelectedMonth] = useState("");
+
+  const handleGeneratePDF = async () => {
+    if (!selectedMonth)
+      return alert("Selecciona un mes antes de generar el informe.");
+
+    const [year, month] = selectedMonth.split("-");
+    const actividades = await getActividadesPorUsuarioYMes(
+      usuario._id,
+      year,
+      month
+    );
+    generateInformeUsuarioPDF(usuario, actividades, selectedMonth);
+  };
 
   useEffect(() => {
     const fetchUsuario = async () => {
@@ -38,6 +54,24 @@ const UsuarioDetalle = () => {
       <Navbar />
       <div className="usuario-detalle-container">
         <PageTitle title={`Datos personales de ${usuario.nombre}`} />
+
+        {user.rol === "Tecnico" && (
+          <div className="generar-pdf-container">
+            <label htmlFor="mes" className="generar-pdf-label">
+              Seleccionar mes:
+            </label>
+            <input
+              type="month"
+              id="mes"
+              className="generar-pdf-input"
+              value={selectedMonth}
+              onChange={(e) => setSelectedMonth(e.target.value)}
+            />
+            <div className="generar-pdf-button">
+              <Button text="Generar informe PDF" onClick={handleGeneratePDF} />
+            </div>
+          </div>
+        )}
 
         <div className="usuario-detalle-grid">
           <DetailField label="Nombre" value={usuario.nombre} />
