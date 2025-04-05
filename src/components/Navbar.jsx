@@ -15,11 +15,15 @@ const Navbar = () => {
   const getLinks = () => {
     switch (user.rol) {
       case "Familiar":
-        return [{ path: "/mis-familiares", label: "Mis familiares" }];
+        return [
+          { path: "/mis-familiares", label: "Mis familiares" },
+          { path: "/eventos", label: "Eventos" },
+        ];
       case "Auxiliar":
         return [
           { path: "/usuarios", label: "Usuarios" },
           { path: "/actividades", label: "Actividades" },
+          { path: "/eventos", label: "Eventos" },
           { path: "/incidencias", label: "Incidencias" },
           { path: "/asistencias", label: "Faltas" },
         ];
@@ -27,6 +31,7 @@ const Navbar = () => {
         return [
           { path: "/usuarios", label: "Usuarios" },
           { path: "/actividades", label: "Actividades" },
+          { path: "/eventos", label: "Eventos" },
           { path: "/incidencias", label: "Incidencias" },
           { path: "/trabajadores", label: "Trabajadores" },
           { path: "/familiares", label: "Familiares" },

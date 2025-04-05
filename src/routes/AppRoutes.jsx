@@ -37,6 +37,10 @@ import Incidencias from "../pages/Incidencias";
 import CrearIncidencia from "../pages/CrearIncidencia";
 import IncidenciaDetalle from "../pages/IncidenciaDetalle";
 import EditarIncidencia from "../pages/EditarIncidencia";
+import Eventos from "../pages/Eventos";
+import CrearEvento from "../pages/CrearEvento";
+import EventoDetalle from "../pages/EventoDetalle";
+import EditarEvento from "../pages/EditarEvento";
 
 const AppRoutes = () => {
   return (
@@ -52,6 +56,8 @@ const AppRoutes = () => {
         <Route path="/usuarios/:id" element={<UsuarioDetalle />} />
         <Route path="/perfil" element={<Perfil />} />
         <Route path="/actividades/:id" element={<ActividadDetalle />} />
+        <Route path="/eventos" element={<Eventos />} />
+        <Route path="/eventos/:id" element={<EventoDetalle />} />
       </Route>
 
       <Route element={<PrivateRoute allowedRoles={["Tecnico", "Auxiliar"]} />}>
@@ -84,6 +90,8 @@ const AppRoutes = () => {
         />
         <Route path="/crear-actividad" element={<CrearActividad />} />
         <Route path="/editar-actividad/:id" element={<EditarActividad />} />
+        <Route path="/crear-evento" element={<CrearEvento />} />
+        <Route path="/editar-evento/:id" element={<EditarEvento />} />
       </Route>
 
       <Route element={<PrivateRoute allowedRoles={["Auxiliar"]} />}>

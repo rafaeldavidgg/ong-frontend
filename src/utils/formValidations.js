@@ -38,6 +38,13 @@ export const validateField = (name, value, isEditing = false) => {
         return "La duración debe ser un número mayor que 0";
       }
       break;
+    case "entradasTotales":
+    case "trabajadoresMinimos":
+      if (!value) return "Este campo es obligatorio";
+      if (isNaN(value) || Number(value) <= 0) {
+        return "Debe ser un número mayor que 0";
+      }
+      break;
     default:
       return "";
   }
