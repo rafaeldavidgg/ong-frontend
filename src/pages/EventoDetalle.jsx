@@ -24,6 +24,7 @@ const EventoDetalle = () => {
   const [entradaCantidad, setEntradaCantidad] = useState(1);
   const [mensaje, setMensaje] = useState("");
   const [mensajeEntradas, setMensajeEntradas] = useState("");
+  const [showEntradasModal, setShowEntradasModal] = useState(false);
 
   useEffect(() => {
     const fetchEvento = async () => {
@@ -158,6 +159,15 @@ const EventoDetalle = () => {
 
         {mensaje && <p className="success-text">{mensaje}</p>}
 
+        {user.rol === "Tecnico" && (
+          <div className="btn-participar-container">
+            <Button
+              text="Ver entradas solicitadas"
+              onClick={() => setShowEntradasModal(true)}
+            />
+          </div>
+        )}
+
         <div className="volver-container">
           <ButtonSecondary text="Volver" onClick={() => navigate(-1)} />
           {user.rol === "Tecnico" && (
@@ -167,6 +177,32 @@ const EventoDetalle = () => {
             />
           )}
         </div>
+
+        {showEntradasModal && (
+          <div className="modal-overlay-entradas">
+            <div className="modal-content-entradas">
+              <h3>Entradas solicitadas</h3>
+              <ul>
+                {evento.entradasSolicitadas?.length > 0 ? (
+                  evento.entradasSolicitadas.map((entrada) => (
+                    <li key={entrada._id}>
+                      {entrada.usuario?.nombre} {entrada.usuario?.apellido} —{" "}
+                      <strong>{entrada.cantidad}</strong> entrada(s)
+                    </li>
+                  ))
+                ) : (
+                  <li>No hay entradas solicitadas.</li>
+                )}
+              </ul>
+              <button
+                className="close-modal-button"
+                onClick={() => setShowEntradasModal(false)}
+              >
+                Cerrar
+              </button>
+            </div>
+          </div>
+        )}
       </div>
     </>
   );
