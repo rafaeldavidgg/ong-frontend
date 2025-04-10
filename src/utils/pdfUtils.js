@@ -2,7 +2,6 @@ import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable";
 import { formatDate } from "./dateUtils";
 import logo from "../assets/logo.png";
-import { format } from "date-fns";
 import { getTipoAutismoLabel } from "./tipoAutismoUtils";
 
 const PRIMARY_COLOR = [16, 69, 114];
@@ -215,9 +214,8 @@ export const generateInformeUsuarioPDF = (
     doc.text(`DNI: ${usuario.dni}`, marginX, y);
     y += LINE_HEIGHT;
     doc.text(
-      `Fecha de nacimiento: ${format(
-        new Date(usuario.fechaNacimiento),
-        "dd/MM/yyyy"
+      `Fecha de nacimiento: ${formatDate(
+        new Date(usuario.fechaNacimiento)
       )}`,
       marginX,
       y
@@ -243,7 +241,7 @@ export const generateInformeUsuarioPDF = (
         head: [["Nombre", "Fecha", "Tipo"]],
         body: actividades.map((a) => [
           a.nombre,
-          format(new Date(a.fecha), "dd/MM/yyyy"),
+          formatDate(new Date(a.fecha)),
           a.tipoActividad?.nombreTipo || "—",
         ]),
         headStyles: {
