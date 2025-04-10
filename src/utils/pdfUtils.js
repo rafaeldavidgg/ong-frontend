@@ -3,7 +3,6 @@ import autoTable from "jspdf-autotable";
 import { formatDate } from "./dateUtils";
 import logo from "../assets/logo.png";
 import { format } from "date-fns";
-import es from "date-fns/locale/es";
 import { getTipoAutismoLabel } from "./tipoAutismoUtils";
 
 const PRIMARY_COLOR = [16, 69, 114];
@@ -164,8 +163,9 @@ export const generateInformeUsuarioPDF = (
   });
 
   const [year, month] = mesSeleccionado.split("-");
-  const nombreMes = format(new Date(year, month - 1), "MMMM yyyy", {
-    locale: es,
+  const nombreMes = new Date(year, month - 1).toLocaleDateString("es-ES", {
+    month: "long",
+    year: "numeric",
   });
 
   const pageWidth = doc.internal.pageSize.getWidth();
