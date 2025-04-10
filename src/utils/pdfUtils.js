@@ -3,7 +3,7 @@ import autoTable from "jspdf-autotable";
 import { formatDate } from "./dateUtils";
 import logo from "../assets/logo.png";
 import { format } from "date-fns";
-import { es } from "date-fns/locale";
+import es from "date-fns/locale/es";
 import { getTipoAutismoLabel } from "./tipoAutismoUtils";
 
 const PRIMARY_COLOR = [16, 69, 114];
